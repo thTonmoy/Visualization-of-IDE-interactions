@@ -1,0 +1,16 @@
+NavigationEvent: 9
+ActivityEvent: 1
+CompletionEvent: 10
+FindEvent: 15
+DocumentEvent: 6
+SystemEvent: 13
+UserProfileEvent: 12
+SolutionEvent: 3
+BuildEvent: 8
+IDEStateEvent: 2
+WindowEvent: 7
+TestRunEvent: 14
+VersionControlEvent: 0
+CommandEvent: 5
+EditEvent: 4
+DebuggerEvent: 11
