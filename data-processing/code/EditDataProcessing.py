@@ -30,11 +30,12 @@ def plot_with_plotly(df):
 
 
 def plot_with_matplotlib(df):
-    # plt.figure()
-    # df.plot()
-    # plt.show()
-    plt.plot(df['location'], '-', linewidth=1)
-    plt.plot(df['size'], '-', linewidth=1)
+    df.set_index('start', inplace=True)
+    plt.figure()
+    print(df.head())
+    df.plot(kind= "line")
+    # plt.plot(df['location'], '-', linewidth=1)
+    # plt.plot(df['size'], '-', linewidth=1)
     plt.show()
     return
 
@@ -44,4 +45,5 @@ df = pd.read_csv("../data/transformed_data_2016-05-09_edit.csv",
                    usecols=['start', 'duration', 'location', 'size'],
                    parse_dates=['start'],
                    date_parser=lambda epoch: pd.to_datetime(epoch, unit='s'))
-plot_with_matplotlib(df= df[['location', 'size']])
+
+plot_with_matplotlib(df= df[['start', 'location']][2000:9000])
