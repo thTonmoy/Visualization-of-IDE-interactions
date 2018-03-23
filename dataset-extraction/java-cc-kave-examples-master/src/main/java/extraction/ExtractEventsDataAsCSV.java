@@ -6,6 +6,7 @@ import cc.kave.commons.model.events.testrunevents.TestCaseResult;
 import cc.kave.commons.model.events.testrunevents.TestResult;
 import cc.kave.commons.model.events.testrunevents.TestRunEvent;
 import cc.kave.commons.model.events.visualstudio.EditEvent;
+import cc.kave.commons.model.events.visualstudio.FindEvent;
 import cc.kave.commons.utils.io.IReadingArchive;
 import cc.kave.commons.utils.io.ReadingArchive;
 import examples.IoHelper;
@@ -91,8 +92,9 @@ public class ExtractEventsDataAsCSV {
                     }
                     if (commandEvent && e instanceof CommandEvent) {
                         CommandEvent commandEvent = (CommandEvent) e;
-                        String info = commandEvent.IDESessionUUID+ ","
-                          + commandEvent.getCommandId() + ","
+                        String info =
+                                //commandEvent.IDESessionUUID+ "," +
+                          commandEvent.getCommandId() + ","
                           + commandEvent.TriggeredAt.toEpochSecond() + ","
                           + commandEvent.TriggeredBy.name()
                               +  "\r\n";

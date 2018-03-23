@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collapsible tree in reusable format using D3 v4</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+{#    <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>#}
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
+    <script src="{{ url_for('static', filename='js/tree-chart.js') }}"></script>
+</head>
+<body>
+
+<div id="chart"></div>
+
+<script>
+
+    var myTree = tree().height(800).width(960);
+
+	d3.text("{{ url_for('static', filename='test_comm.csv') }}", function(error, text) {
+		if (error) throw error;
+		var table = [{
+			name: 'Triggered',
+            parent: null
+        }];
+		var methods = [];
+		var commands = [];
+		d3.csvParseRows(text, function (d, i) {
+			if (d[0].startsWith('trigger')) return;
+
+			if (!commands.find(function(element){ return element === d[1]; })) {
+				table.push({
+					name: d[1],
+					parent: d[0]
+				});
+				commands.push(d[1]);
+			}
+
+			if (!methods.find(function(element){ return element === d[0]; })) {
+				table.push({
+					name: d[0],
+					parent: "Triggered"
+				});
+				methods.push(d[0]);
+			}
+		});
+
+		var root = d3.stratify()
+            .id(function(d) { return d.name; })
+            .parentId(function (d) { return d.parent; })
+            (table);
+
+		myTree.data(root);
+
+		d3.select('#chart')
+			.call(myTree);
+    });
+
+
+</script>
+
+</body>
+</html>
