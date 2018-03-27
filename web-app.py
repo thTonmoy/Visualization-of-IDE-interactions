@@ -15,5 +15,10 @@ def show_tree_chart():
     return render_template("tree.html")
 
 
+@app.route('/test')
+def show_template():
+    return render_template("dashboard.html")
+
+
 if __name__ == '__main__':
     app.run()

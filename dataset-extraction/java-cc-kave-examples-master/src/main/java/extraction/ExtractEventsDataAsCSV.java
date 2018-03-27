@@ -37,6 +37,9 @@ public class ExtractEventsDataAsCSV {
         int zipTotal = zips.size();
         int zipCount = 0;
         for (String zip : zips) {
+            zipCount++;
+            //if(zipCount<=10) continue;
+            if (zipCount == 7) break;
             String fileName = filenamePrefix + zip.toString().subSequence(0, 10);
             BufferedWriter testEventWriter = null, editEventWriter = null, commandEventWriter = null;
             try {
@@ -47,8 +50,6 @@ public class ExtractEventsDataAsCSV {
                 e.printStackTrace();
             }
             double perc = 100 * zipCount / (double) zipTotal;
-            zipCount++;
-            if (zipCount == 5) break;
 
             System.out.printf("## %s, processing %s... (%d/%d, %.1f%% done)\n", new Date(), zip, zipCount, zipTotal,
                     perc);
