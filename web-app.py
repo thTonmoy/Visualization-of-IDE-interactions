@@ -4,20 +4,21 @@ from feature_by_hour import get_bar_chart_div
 app = Flask(__name__)
 
 
-@app.route('/other')
+@app.route('/Bar')
 def hello_world():
     chart = Markup(get_bar_chart_div(app.root_path))
-    return render_template("index.html",title='Home', chart=chart)
+    return render_template("index.html",title='Bar Chart', chart=chart)
 
 
 @app.route('/')
-def show_tree_chart():
-    return render_template("tree.html")
-
-
-@app.route('/test')
 def show_template():
-    return render_template("dashboard.html")
+    chart = Markup(get_bar_chart_div(app.root_path))
+    return render_template("dashboard.html",title='Home',chart=chart)
+
+
+@app.route('/tree')
+def show_tree_chart():
+    return render_template("tree.html",title='Tree graph')
 
 
 if __name__ == '__main__':

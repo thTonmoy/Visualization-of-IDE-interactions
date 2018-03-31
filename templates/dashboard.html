@@ -44,8 +44,8 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                <a href="http://www.github.com/sakib2263" class="simple-text">
+                    Visualization of IDE Interactions
                 </a>
             </div>
 
@@ -99,7 +99,7 @@
                     </a>
                 </li>
                 <li class="Binary Tree Graph">
-                    <a href="tree.html">
+                    <a href="tree">
                         <i class="pe-7s-rocket"></i>
                         <p>Tree Graph</p>
                     </a>
@@ -247,16 +247,18 @@
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">2014 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">Barchart</h4>
+                                <p class="category">All events frequency during every hour a day</p>
                             </div>
                             <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
+                                <script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
+                                {{chart}}
+                                <div id="Bar" class="chart"></div>
 
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                        <i class="fa fa-circle text-info"></i> Events
+                                        <i class="fa fa-circle text-danger"></i> Time
                                     </div>
                                     <hr>
                                     <div class="stats">
