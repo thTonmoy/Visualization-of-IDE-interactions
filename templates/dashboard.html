@@ -5,7 +5,7 @@
     <link rel=icon type=image/png href="{{ url_for('static', filename='img/favicon.ico') }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>Visualitaion Of IDE Interactions</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -53,7 +53,7 @@
                 <li class="active">
                     <a href="dashboard.html">
                         <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                        <p>Home Page</p>
                     </a>
                 </li>
                 <li>
@@ -65,43 +65,43 @@
                 <li>
                     <a href="table.html">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Data set and Processing</p>
                     </a>
                 </li>
                 <li>
                     <a href="typography.html">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                        <p>Visualization 1</p>
                     </a>
                 </li>
                 <li>
                     <a href="icons.html">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>Visualization 2</p>
                     </a>
                 </li>
                 <li>
                     <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Visualization 3</p>
                     </a>
                 </li>
                 <li>
                     <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Visualization 4</p>
                     </a>
                 </li>
 				<li class="active-pro">
                     <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>This is not Rocket Science!</p>
                     </a>
                 </li>
                 <li class="Binary Tree Graph">
                     <a href="tree">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Tree Graph</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Visualize Command Usage(Collapsible Tree)</p>
                     </a>
                 </li>
             </ul>
@@ -125,7 +125,7 @@
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
+								<p class="hidden-lg hidden-md">Visualization</p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -192,39 +192,39 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+                                <h4 class="title">Area Plot</h4>
+                                <p class="category">Usage of IDE Features</p>
                             </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                                <div class="image">
+                                <img src="{{ url_for('static', filename='summery.png') }}" width="50dp" height="200dp"/>
 
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                        <i class="fa fa-circle text-info"></i> Events
+                                        <i class="fa fa-circle text-danger"></i> Frequency
+                                        <i class="fa fa-circle text-warning"></i> ??
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                        <i class="fa fa-clock-o"></i> Fixed dataset MSR2018
                                     </div>
                                 </div>
-                            </div>
+                                </div>
                         </div>
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Language Popularity among Developers & Learners</h4>
+                                <p class="category">From survey of the the developer who learned and didnot learn a language.</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
+                                <img src="{{ url_for('static', filename='langpop.png') }}"/>
                                 <div class="footer">
                                     <div class="legend">
                                         <i class="fa fa-circle text-info"></i> Open
@@ -427,7 +427,7 @@
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com"> Template from Creative Tim</a>, Project by- Sakib, Tonmoy ,Zaki
                 </p>
             </div>
         </footer>
@@ -465,7 +465,7 @@
 
         	$.notify({
             	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+            	message: "Hi, Developers! Welcome to our<b>Software Enginnering Project</b> - a beautiful  website for <b>Visualization</b> of different Datasets."
 
             },{
                 type: 'info',
