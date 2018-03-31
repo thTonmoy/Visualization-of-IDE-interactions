@@ -1,9 +1,9 @@
 import pandas as pd
 import plotly.offline as py
 import plotly.graph_objs as go
-# import matplotlib.style as mpl_style
-# import matplotlib.pyplot as plt
-# from numpy import arange
+import matplotlib.style as mpl_style
+import matplotlib.pyplot as plt
+from numpy import arange
 import os
 
 
@@ -53,7 +53,6 @@ def prepare_data_for_plot(df: pd.DataFrame):
           'EditEvent', 'CommandEvent', 'DocumentEvent', 'WindowEvent', 'BuildEvent',
           'NavigationEvent', 'CompletionEvent', 'DebuggerEvent', 'UserProfileEvent', 'SystemEvent',
           'TestRunEvent', 'FindEvent']
-
     data = [go.Bar(
         visible=False,
         name=str(i) + ":00-" + str(i + 1) + ":00",
@@ -129,23 +128,31 @@ def get_bar_chart_div(root_path: str):
     plotly_config = {
         'modeBarButtonsToRemove': ['sendDataToCloud', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian',
                                    'hoverCompareCartesian', 'lasso2d', 'select2d'],
-        'displaylogo': False, 'showTips': True}
+                                    'displaylogo': False, 'showTips': True}
     return py.plot(fig, include_plotlyjs=False, output_type='div', show_link=False, config=plotly_config)
 
 
 def get_area_plot():
     df = load_dataframe("data/fbh.csv")
-    # make_bar_plot(df)
-    # data = pd.read_csv("data/fbh.csv")
-    # data = data.groupby([data['event']]).agg({'duration': sum,
-    #                                           'frequency': sum})
-    # print(data)
-    # mpl_style.use('ggplot')
-    # plt.stackplot(arange(0,14,1), data['frequency'], data['duration'])
-    # plt.yscale('log')
-    # plt.xlabel("event")
-    # plt.ylabel("frequency and duration  [log scale]")
-    # plt.show()
+    df = df.groupby([df['event']]).agg({'duration': sum,
+                                              'frequency': sum})
+    lx = ['ActivityEvent', 'IDEStateEvent', 'SolutionEvent',
+          'EditEvent', 'CommandEvent', 'DocumentEvent', 'WindowEvent', 'BuildEvent',
+          'NavigationEvent', 'CompletionEvent', 'DebuggerEvent', 'UserProfileEvent', 'SystemEvent',
+          'TestRunEvent']
+    mpl_style.use('ggplot')
+    labels = ['frequency', 'duration']
+    fig, ax = plt.subplots()
+    ax.tick_params(labelrotation=30)
+    fig.subplots_adjust(bottom=0.22)
+    ax.stackplot(lx, df['frequency'], df['duration'], labels=labels)
+    ax.legend(loc=2)
+    ax.grid()
+    plt.yscale('log')
+    plt.xlabel("event")
+    plt.ylabel("frequency and duration  [log scale]")
+    plt.show()
+    # return py.plot_mpl(fig, "hello.html")
 
 
 def main():
@@ -153,7 +160,7 @@ def main():
     # print(df.head())
     # make_bar_plot(df)
     # print(get_bar_chart_div())
-    #get_area_plot()
+    get_area_plot()
     return
 
 

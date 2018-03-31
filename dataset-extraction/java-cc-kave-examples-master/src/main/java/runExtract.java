@@ -5,6 +5,6 @@ public class runExtract {
 
     public static void main(String[] args) {
 
-        new ExtractEventsDataAsCSV(eventsDir, false, false, true).run();
+        new ExtractEventsDataAsCSV(eventsDir, true, true, false, true).run();
     }
 }
