@@ -2,7 +2,7 @@ Data Field,Survey Question,Notes
 RespondentID,,Respondent ID
 StartDate,,When did they start (date and time)
 EndDate,,When did they end (date and time)
-CountryNumeric2,,see Country-Code-Mapping.csv
+CountryNumeric,,see Country-Code-Mapping.csv
 q1AgeBeginCoding,At what age did you start coding,
 q2Age,How old are you now?,
 q3Gender,What gender do you identify with?,

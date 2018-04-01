@@ -27,5 +27,10 @@ def show_refactoring_build_vis():
     chart = Markup(get_div_for_plot(app.root_path))
     return render_template("index.html", title='Home', chart=chart)
 
+@app.route('/map')
+def world_map():
+    return render_template("Wmap.html", title='Map')
+
+
 if __name__ == '__main__':
     app.run()
