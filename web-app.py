@@ -14,18 +14,19 @@ def hello_world():
 @app.route('/')
 def show_template():
     chart = Markup(get_bar_chart_div(app.root_path))
-    return render_template("dashboard.html",title='Home',chart=chart)
+    return render_template("dashboard.html", title='Home',chart=chart)
 
 
 @app.route('/tree')
 def show_tree_chart():
-    return render_template("tree.html",title='Tree graph')
+    return render_template("tree.html", title='Commands and Triggers',
+                           desc='Which IDE commands are used the most and how they are triggered')
 
 
 @app.route('/rb')
 def show_refactoring_build_vis():
     chart = Markup(get_div_for_plot(app.root_path))
-    return render_template("index.html", title='Home', chart=chart)
+    return render_template("index.html", title='Refactoring', desc='Does Refactoring impact Test and Build Failures', chart=chart)
 
 @app.route('/map')
 def world_map():

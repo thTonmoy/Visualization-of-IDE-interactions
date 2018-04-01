@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Collapsible tree in reusable format using D3 v4</title>
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <title>{{ title }}</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 {#    <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>#}
  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
     <script src="{{ url_for('static', filename='js/tree-chart.js') }}"></script>
@@ -19,9 +19,6 @@
     <!--  Light Bootstrap Table core CSS    -->
     <link href="static/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="static/css/demo.css" rel="stylesheet" />
     <!--Collapsible tree-->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
 
@@ -34,7 +31,7 @@
 
 
 <div class="wrapper">
-    <div class="sidebar" data-color="orange" data-image="static/img/sidebar-5.jpg">
+     <div class="sidebar" data-color="purple" data-image="static/img/sidebar-5.jpg">
 
     <!--
 
@@ -45,16 +42,28 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.github.com/sakib2263" class="simple-text">
+                <a href="/" class="simple-text">
                     Visualization of IDE Interactions
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="/">
                         <i class="pe-7s-graph"></i>
-                        <p>Home Page</p>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="tree">
+                        <i class="pe-7s-graph"></i>
+                        <p>Usage of IDE Commands</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="rb">
+                        <i class="pe-7s-graph"></i>
+                        <p>Does Refactoring impact Test and Build Failures</p>
                     </a>
                 </li>
                 <li>
@@ -82,27 +91,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualization 3</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualization 4</p>
+                    <a href="map">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>World Map</p>
                     </a>
                 </li>
 				<li class="active-pro">
                     <a href="upgrade.html">
                         <i class="pe-7s-graph"></i>
                         <p>This is not Rocket Science!</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="tree">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualize Command Usage(Collapsible Tree)</p>
                     </a>
                 </li>
             </ul>
@@ -119,7 +116,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Collapsing Tree</a>
+                    <a class="navbar-brand" href="#">{{ title }}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -189,9 +186,17 @@
             </div>
         </nav>
 
-
-<div id="chart"></div>
-<script>
+                <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h3>{{ desc }}</h3>
+                            </div>
+                                <div class="content">
+                                    <div id="chart"></div>
+                                        <script>
 
     var myTree = tree().height(800).width(960);
 
@@ -235,6 +240,28 @@
     });
 
 </script>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h3>Explanation</h3>
+                            </div>
+                                <div class="content">
+                                    <div class="text-justify"></div>
+                                        <p> This is..</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
     <footer class="footer">
             <div class="container-fluid">

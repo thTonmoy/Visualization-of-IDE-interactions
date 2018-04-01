@@ -141,17 +141,16 @@ def get_area_plot():
           'NavigationEvent', 'CompletionEvent', 'DebuggerEvent', 'UserProfileEvent', 'SystemEvent',
           'TestRunEvent']
     mpl_style.use('ggplot')
-    labels = ['frequency', 'duration']
     fig, ax = plt.subplots()
-    ax.tick_params(labelrotation=30)
+    ax.tick_params(labelrotation=-80)
     fig.subplots_adjust(bottom=0.22)
-    ax.stackplot(lx, df['frequency'], df['duration'], labels=labels)
-    ax.legend(loc=2)
+    ax.stackplot(lx, df['frequency'], df['duration'])
     ax.grid()
     plt.yscale('log')
-    plt.xlabel("event")
     plt.ylabel("frequency and duration  [log scale]")
-    plt.show()
+    fig.set_tight_layout(True)
+    fig.savefig('static/summary.svg')
+    #plt.show()
     # return py.plot_mpl(fig, "hello.html")
 
 

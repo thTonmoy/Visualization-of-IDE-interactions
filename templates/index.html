@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>{{ title }} IDE interaction</title>
+        <title>Visualizing IDE interaction</title>
 
         	<link rel="icon" type="image/png" href="static/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -31,7 +31,7 @@
     <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="orange" data-image="static/img/sidebar-5.jpg">
+  <div class="sidebar" data-color="purple" data-image="static/img/sidebar-5.jpg">
 
     <!--
 
@@ -42,16 +42,28 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.github.com/sakib2263" class="simple-text">
+                <a href="/" class="simple-text">
                     Visualization of IDE Interactions
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="/">
                         <i class="pe-7s-graph"></i>
-                        <p>Home Page</p>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="tree">
+                        <i class="pe-7s-graph"></i>
+                        <p>Usage of IDE Commands</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="rb">
+                        <i class="pe-7s-graph"></i>
+                        <p>Does Refactoring impact Test and Build Failures</p>
                     </a>
                 </li>
                 <li>
@@ -72,34 +84,22 @@
                         <p>Visualization 1</p>
                     </a>
                 </li>
-                <li class="active-pro">
+                <li>
                     <a href="icons.html">
                         <i class="pe-7s-science"></i>
                         <p>Visualization 2</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualization 3</p>
+                    <a href="map">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>World Map</p>
                     </a>
                 </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualization 4</p>
-                    </a>
-                </li>
-				<li>
+				<li class="active-pro">
                     <a href="upgrade.html">
                         <i class="pe-7s-graph"></i>
                         <p>This is not Rocket Science!</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="tree">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualize Command Usage(Collapsible Tree)</p>
                     </a>
                 </li>
             </ul>
@@ -116,7 +116,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Collapsing Tree</a>
+                    <a class="navbar-brand" href="#">{{ title }}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -186,12 +186,23 @@
             </div>
         </nav>
 
-
-        <h1>Visualizing Relation between Refactoring & Failed tests</h1>
-<script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
-    {{chart}}
-<div class="plotly-graph-div"></div>
-    </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h3>{{ desc }}</h3>
+                            </div>
+                                <div class="content">
+                                    <script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
+                                        {{chart}}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
      <footer class="footer">
@@ -229,6 +240,7 @@
         </footer>
 
 
+</div>
 </div>
 	</body>
 </html>

@@ -44,16 +44,28 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.github.com/sakib2263" class="simple-text">
+                <a href="/" class="simple-text">
                     Visualization of IDE Interactions
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="/">
                         <i class="pe-7s-graph"></i>
-                        <p>Home Page</p>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="tree">
+                        <i class="pe-7s-graph"></i>
+                        <p>Usage of IDE Commands</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="rb">
+                        <i class="pe-7s-graph"></i>
+                        <p>Does Refactoring impact Test and Build Failures</p>
                     </a>
                 </li>
                 <li>
@@ -81,12 +93,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="rb">
-                        <i class="pe-7s-graph"></i>
-                        <p>REfactoring Test Failures</p>
-                    </a>
-                </li>
-                <li>
                     <a href="map">
                         <i class="pe-7s-map-marker"></i>
                         <p>World Map</p>
@@ -96,12 +102,6 @@
                     <a href="upgrade.html">
                         <i class="pe-7s-graph"></i>
                         <p>This is not Rocket Science!</p>
-                    </a>
-                </li>
-                <li class="Binary Tree Graph">
-                    <a href="tree">
-                        <i class="pe-7s-graph"></i>
-                        <p>Visualize Command Usage(Collapsible Tree)</p>
                     </a>
                 </li>
             </ul>
@@ -118,7 +118,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">Home</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -156,7 +156,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="">
-                               <p>Account</p>
+                               <p>About</p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -192,21 +192,62 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="card">
-
                             <div class="header">
-                                <h4 class="title">Area Plot</h4>
-                                <p class="category">Usage of IDE Features</p>
+                                <h4 class="title">Welcome</h4>
+                            </div>
+                             <div class="content">
+                                <p class="simple-text">  This project aims to visualize how developers interact with IDE using
+                                    msr 2018 interaction dataset and other developer data from hacker rank survey.
+                                </p>
+                                 <p class="text-justify">
+                                    Integrated Development Environments are used extensively in software development. Therefore,
+                                    it provides immense insight into how developers work if we can visualize how they interact with
+                                    various IDE features. Visualizing these interactions will give us a clear picture of how development
+                                    activities typically go on. This information is helpful to evaluate whether the existing IDE environments
+                                    give developers ample support and improve existing tools.
+                                </p>
+                                 <p class="text-justify">
+                                    Use the navigation menu on the side to explore different interactive visualization and provide us with your valuable feedback
+                                </p>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="col-md-8">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Developer Activity throughout the day</h4>
+                                <p class="category">Useful for understanding Developers Working Habits and Efficiency</p>
+                            </div>
+                            <div class="content">
+                                <script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
+                                {{chart}}
+                                <div id="Bar" class="chart"></div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i>Use Slider to interact and see different activities at different time
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                        <div class="content">
+                            <div class="header">
+                                <h4 class="title">IDE Event occurance</h4>
+                                <p class="category">Which feature was used most</p>
                             </div>
                                 <div class="image">
-                                <img src="{{ url_for('static', filename='summery.png') }}" width="50dp" height="200dp"/>
+                                <img src="{{ url_for('static', filename='summary.svg') }}"/>
 
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Events
+                                        <i class="fa fa-circle text-info"></i> Duration
                                         <i class="fa fa-circle text-danger"></i> Frequency
-                                        <i class="fa fa-circle text-warning"></i> ??
                                     </div>
                                     <hr>
                                     <div class="stats">
@@ -215,9 +256,14 @@
                                 </div>
                                 </div>
                         </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="col-md-6">
+
+
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Language Popularity among Developers & Learners</h4>
@@ -234,35 +280,6 @@
                                     <hr>
                                     <div class="stats">
                                         <i class="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Barchart</h4>
-                                <p class="category">All events frequency during every hour a day</p>
-                            </div>
-                            <div class="content">
-                                <script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
-                                {{chart}}
-                                <div id="Bar" class="chart"></div>
-
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Events
-                                        <i class="fa fa-circle text-danger"></i> Time
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
                                     </div>
                                 </div>
                             </div>
