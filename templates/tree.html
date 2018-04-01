@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>Usage of IDE Commands</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
     <script src="https://d3js.org/d3.v4.min.js"></script>
 {#    <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>#}
- <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
+     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
     <script src="{{ url_for('static', filename='js/tree-chart.js') }}"></script>
 
 	<link rel="icon" type="image/png" href="static/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <!-- Bootstrap core CSS     -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+     <!-- Bootstrap core CSS     -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
 
     <!-- Animation library for notifications   -->
-    <link href="static/css/animate.min.css" rel="stylesheet"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/animate.min.css') }}">
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="static/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/light-bootstrap-dashboard.css') }}">
 
-    <!--Collapsible tree-->
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/demo.css') }}">
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="static/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icono.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/font-all.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
 </head>
 <body>
 
 
 <div class="wrapper">
-     <div class="sidebar" data-color="purple" data-image="static/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="purple" data-image="static/img/sidebar-2.jpg">
 
     <!--
 
@@ -48,15 +56,15 @@
             </div>
 
             <ul class="nav">
-                <li>
+                <li class=>
                     <a href="/">
-                        <i class="pe-7s-graph"></i>
+                        <i class="fas fa-chart-line"></i>
                         <p>Home</p>
                     </a>
                 </li>
                 <li class="active">
                     <a href="tree">
-                        <i class="pe-7s-graph"></i>
+                        <i class="fas fa-code-branch"></i>
                         <p>Usage of IDE Commands</p>
                     </a>
                 </li>
@@ -80,25 +88,25 @@
                 </li>
                 <li>
                     <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
+                        <i class="icono-pieChart"></i>
                         <p>Visualization 1</p>
                     </a>
                 </li>
                 <li>
                     <a href="icons.html">
-                        <i class="pe-7s-science"></i>
+                        <i class="icono-areaChart"></i>
                         <p>Visualization 2</p>
                     </a>
                 </li>
                 <li>
                     <a href="map">
-                        <i class="pe-7s-map-marker"></i>
+                        <i class="fas fa-globe"></i>
                         <p>World Map</p>
                     </a>
                 </li>
 				<li class="active-pro">
                     <a href="upgrade.html">
-                        <i class="pe-7s-graph"></i>
+                        <i class="pe-7s-rocket"></i>
                         <p>This is not Rocket Science!</p>
                     </a>
                 </li>
@@ -116,14 +124,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ title }}</a>
+                    <a class="navbar-brand" href="#">Home</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Collapsing Tree</p>
+								<p class="hidden-lg hidden-md">Visualization</p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -154,7 +162,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="">
-                               <p>Account</p>
+                               <p>About</p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -185,6 +193,7 @@
                 </div>
             </div>
         </nav>
+
 
                 <div class="content">
             <div class="container-fluid">

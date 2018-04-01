@@ -53,7 +53,7 @@ data = [dict(
 
     colorbar=dict(title='Response count')
 )]
-layout = dict(title='Number of response by country',
+layout = dict(title='Responsive Programmers throughout the world - Number of response by country',
               geo=dict(showframe=False,
                        showcoastlines=True,
                        projection=dict(type='Mercator')))
