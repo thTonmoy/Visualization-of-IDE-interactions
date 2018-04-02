@@ -36,15 +36,29 @@ def get_map(root:str):
         locationmode='country names',
         z=poo.values,
         text=('Count' + '<br>'),
-        colorscale='hot',
+        colorscale='Reds',
         reversescale=False,
-        marker=dict(line=dict(color='rgb(180,180,180)', width=0.5)),
+        marker=dict(line=dict(color='rgb(180,180,180)', width=1.0)),
+
 
         colorbar=dict(title='Response count')
     )]
     layout = dict(title='Responsive Programmers throughout the world - Number of response by country',
                   geo=dict(showframe=False,
+                           showocean=True,
+                           oceancolor="#3399FF",
                            showcoastlines=True,
-                           projection=dict(type='Mercator')))
+                           projection=dict(type='orthographic')),
+                  #paper_bgcolor='rgb(168, 234, 247)',
+                  #plot_bgcolor='rgb(168, 234, 247)'
+                  )
+
     fig = dict(data=data, layout=layout)
-    return py.plot(fig, include_plotlyjs=False, output_type='div', show_link=False)
+    return py.plot(fig, include_plotlyjs=False, output_type='div', show_link=False, filename='transparent-background')
+
+def main():
+    get_map("")
+    return
+
+if __name__ == "__main__":
+    main()

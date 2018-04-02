@@ -35,6 +35,11 @@ def world_map():
     w_map = Markup(get_map(app.root_path))
     return render_template("Wmap.html", title='Map', chart= w_map)
 
+@app.route('/spidy')
+def Spider_Web():
+    spider = Markup(get_map(app.root_path))
+    return render_template("spidy.html", title='Spider', chart= spider)
+
 
 if __name__ == '__main__':
     app.run()

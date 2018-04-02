@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 
 ## Reading the data:
+from pip._vendor.html5lib._trie import py
+
 hackerRank_codebook = pd.read_csv('data/HackerRank-Developer-Survey-2018-Codebook.csv')
 hackerRank_numericMapping = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric-Mapping.csv')
 hackerRank_numeric = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric.csv')
@@ -166,86 +168,83 @@ lovelanguage.columns = ['group','C', 'C++', 'Java', 'Python','Ruby', 'Javascript
        'Kotlin', 'Typescript','Erlang', 'Julia', 'OCaml']
 hatelanguage.columns = lovelanguage.columns
 
-# From: https://python-graph-gallery.com/391-radar-chart-with-several-individuals/
-categories = list(lovelanguage)[1:]
-N = len(categories)
-# What will be the angle of each axis in the plot? (we divide the plot / number of variable)
-angles = [n / float(N) * 2 * pi for n in range(N)]
-angles += angles[:1]
-# Initialise the spider plot
-fig3 = plt.figure(figsize=(8, 8))
-ax = plt.subplot(111, polar=True)
-plt.title('Which programming language do women love the most?', fontsize=14, fontweight='bold')
+def get_spidy(root:str):
+    #From: https://python-graph-gallery.com/391-radar-chart-with-several-individuals/
+    categories = list(lovelanguage)[1:]
+    N = len(categories)
+    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles += angles[:1]
+    # Initialise the spider plot
+    fig3 = plt.figure(figsize=(8, 8))
+    ax = plt.subplot(111, polar=True)
+    plt.title('Which programming language do people love the most?', fontsize=14, fontweight='bold')
 
-# If you want the first axis to be on top:
-ax.set_theta_offset(pi / 2)
-ax.set_theta_direction(-1)
+    # If you want the first axis to be on top:
+    ax.set_theta_offset(pi / 2)
+    ax.set_theta_direction(-1)
 
-# Draw one axe per variable + add labels labels yet
-plt.xticks(angles[:-1], categories)
-# Draw ylabels
-ax.set_rlabel_position(0)
-plt.yticks([5, 10, 15], ["5%", "10%", "15%"], color="grey", size=12)
-plt.ylim(0, 15)
+    # Draw one axe per variable + add labels labels yet
+    plt.xticks(angles[:-1], categories)
+    # Draw ylabels
+    ax.set_rlabel_position(0)
+    plt.yticks([5, 10, 15], ["5%", "10%", "15%"], color="grey", size=12)
+    plt.ylim(0, 15)
 
-# Plot each individual = each line of the data
-# Ind1
-values = lovelanguage.loc[0].drop('group').values.flatten().tolist()
-values += values[:1]
-ax.plot(angles, values, linewidth=1, linestyle='solid', label="Professional(Love)")
-ax.fill(angles, values, 'b', alpha=0.1)
-# Ind2
-values = lovelanguage.loc[1].drop('group').values.flatten().tolist()
-values += values[:1]
-ax.plot(angles, values, linewidth=1, linestyle='solid', label="Students(Love)")
-ax.fill(angles, values, 'r', alpha=0.1)
+    # Plot each individual = each line of the data
+    # Ind1
+    values = lovelanguage.loc[0].drop('group').values.flatten().tolist()
+    values += values[:1]
+    ax.plot(angles, values, linewidth=1, linestyle='solid', label="Professional(Love)")
+    ax.fill(angles, values, 'b', alpha=0.1)
+    # Ind2
+    values = lovelanguage.loc[1].drop('group').values.flatten().tolist()
+    values += values[:1]
+    ax.plot(angles, values, linewidth=1, linestyle='solid', label="Students(Love)")
+    ax.fill(angles, values, 'r', alpha=0.1)
+    # Add legend
+    plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
+    #plt.savefig('static/lovewWeb.png')
 
-# Add legend
-plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-#plt.savefig('static/lovewWeb.png')
+    ####HATE HATE   HATE HATE HATE
+    categories1 =list(hatelanguage)[1:]
+    N = len(categories1)
+    # What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles += angles[:1]
+    # Initialise the spider plot
+    fig3 = plt.figure(figsize=(8,8))
+    bx = plt.subplot(111, polar=True)
+    plt.title('Which programming language do people hate the most?', fontsize=14, fontweight='bold')
+    # If you want the first axis to be on top:
+    bx.set_theta_offset(pi / 2)
+    bx.set_theta_direction(-1)
+    # Draw one axe per variable + add labels labels yet
+    plt.xticks(angles[:-1], categories)
+    # Draw ylabels
+    bx.set_rlabel_position(0)
+    plt.yticks([3,6,9], ["3%","6%","9%"], color="red", size=12)
+    plt.ylim(0,9)
+    # Plot each individual = each line of the data
+    # Ind1
+    values=hatelanguage.loc[0].drop('group').values.flatten().tolist()
+    values += values[:1]
+    bx.plot(angles, values, linewidth=1, linestyle='solid', label="Professional(Hate)")
+    bx.fill(angles, values, 'b', alpha=0.1)
+    # Ind2
+    values=hatelanguage.loc[1].drop('group').values.flatten().tolist()
+    values += values[:1]
+    bx.plot(angles, values, linewidth=1, linestyle='solid', label="Students(Hate)")
+    bx.fill(angles, values, 'r', alpha=0.1)
 
+    # Add legend
+    plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
+    plt.show()
+    #return py.plot(fig3, include_plotlyjs=False, output_type='div', show_link=False)
 
+def main():
+    get_spidy("")
+    return
 
-####HATE HATE   HATE HATE HATE
-
-
-# From: https://python-graph-gallery.com/391-radar-chart-with-several-individuals/
-categories=list(hatelanguage)[1:]
-N = len(categories)
-# What will be the angle of each axis in the plot? (we divide the plot / number of variable)
-angles = [n / float(N) * 2 * pi for n in range(N)]
-angles += angles[:1]
-# Initialise the spider plot
-fig3 = plt.figure(figsize=(8,8))
-ax = plt.subplot(111, polar=True)
-plt.title('Which programming language do people hate the most?', fontsize=14, fontweight='bold')
-
-# If you want the first axis to be on top:
-ax.set_theta_offset(pi / 2)
-ax.set_theta_direction(-1)
-
-# Draw one axe per variable + add labels labels yet
-plt.xticks(angles[:-1], categories)
-# Draw ylabels
-ax.set_rlabel_position(0)
-plt.yticks([3,6,9], ["3%","6%","9%"], color="red", size=12)
-plt.ylim(0,9)
-
-# Plot each individual = each line of the data
-# Ind1
-values=hatelanguage.loc[0].drop('group').values.flatten().tolist()
-values += values[:1]
-ax.plot(angles, values, linewidth=1, linestyle='solid', label="Professional(Hate)")
-ax.fill(angles, values, 'b', alpha=0.1)
-# Ind2
-values=hatelanguage.loc[1].drop('group').values.flatten().tolist()
-values += values[:1]
-ax.plot(angles, values, linewidth=1, linestyle='solid', label="Students(Hate)")
-ax.fill(angles, values, 'r', alpha=0.1)
-
-# Add legend
-plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-plt.show()
-
-
-#
+if __name__ == "__main__":
+    main()
