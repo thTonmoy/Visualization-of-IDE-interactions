@@ -1,14 +1,8 @@
-# Data analysis packages:
 from math import pi
 
-# Visualization packages:
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import plotly.offline as py
-
-pd.set_option('display.max_columns', None)
-pd.options.display.max_seq_items = 2000
 
 ## Reading the data:
 hackerRank_codebook = pd.read_csv('data/HackerRank-Developer-Survey-2018-Codebook.csv')
@@ -16,12 +10,12 @@ hackerRank_numericMapping = pd.read_csv('data/HackerRank-Developer-Survey-2018-N
 hackerRank_numeric = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric.csv')
 hackerRank_values = pd.read_csv('data/HackerRank-Developer-Survey-2018-Values.csv')
 
-hackerRank_codebook.head()
-for ix,item in hackerRank_codebook.iterrows():
-    print('{0}: {1}\n'.format(item[0], item[1]))
-
-for ix,item in hackerRank_numericMapping.iterrows():
-    print('{0}: {1} : {2}\n'.format(item[0], item[1], item[2]))
+# hackerRank_codebook.head()
+# for ix,item in hackerRank_codebook.iterrows():
+#     print('{0}: {1}\n'.format(item[0], item[1]))
+#
+# for ix,item in hackerRank_numericMapping.iterrows():
+#     print('{0}: {1} : {2}\n'.format(item[0], item[1], item[2]))
 
 ## Selecting the female respondents:
 #dataset = hackerRank_values[hackerRank_values['q3Gender'] == 'Female']
@@ -51,7 +45,7 @@ attributes = ['q1AgeBeginCoding', 'q2Age', 'q3Gender', 'q4Education', 'q0004_oth
 
 dataset = dataset[attributes]
 
-dataset.info()
+print(dataset.info())
 dataset[dataset['q4Education'] == 'Other (please specify)']
 ## Checking the 'q4Education' values:
 dataset['q4Education'].unique()
@@ -208,7 +202,6 @@ ax.fill(angles, values, 'r', alpha=0.1)
 
 # Add legend
 plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-py.plot_mpl(mpl_fig=fig3, validate=False)
 #plt.savefig('static/lovewWeb.png')
 
 
@@ -252,7 +245,6 @@ ax.fill(angles, values, 'r', alpha=0.1)
 
 # Add legend
 plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-
 plt.show()
 
 

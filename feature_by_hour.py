@@ -3,7 +3,6 @@ import plotly.offline as py
 import plotly.graph_objs as go
 import matplotlib.style as mpl_style
 import matplotlib.pyplot as plt
-from numpy import arange
 import os
 
 

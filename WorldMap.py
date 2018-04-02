@@ -1,25 +1,6 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import plotly.offline as py
-import plotly.graph_objs as go
-
-plt.style.use('ggplot')
-pd.options.display.max_rows = 300
-plt.rc('ytick', labelsize=12)
-plt.rc('ytick', labelsize=12)
-plt.rc('axes', labelsize=12)
-
-hacker_numeric = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric.csv', na_values='#NULL!', low_memory=False)
-hacker_map = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric-Mapping.csv')
-hacker_qna = pd.read_csv('data/HackerRank-Developer-Survey-2018-Codebook.csv')
-
-df = pd.read_csv('data/HackerRank-Developer-Survey-2018-Values.csv', na_values='#NULL!', low_memory=False)
-
-print('Number of rows and columns in Hacker value data set', df.shape)
-
-hacker_qna = hacker_qna.set_index('Data Field')
-hacker_qna.head()
-df.head()
+import os
 
 
 def basic_details(df):
@@ -32,31 +13,38 @@ def basic_details(df):
     return k
 
 
-basic_details(df).T
+def get_map(root:str):
+    hacker_qna = pd.read_csv(os.path.join('data','HackerRank-Developer-Survey-2018-Codebook.csv'))
+    df = pd.read_csv(os.path.join('data','HackerRank-Developer-Survey-2018-Values.csv'),
+                     na_values='#NULL!', low_memory=False)
+    # print('Number of rows and columns in Hacker value data set', df.shape)
 
-df.tail()
+    hacker_qna = hacker_qna.set_index('Data Field')
+    hacker_qna.head()
+    # print(df.head())
 
-# Count by country
+    #basic_details(df).T
+    # print(df.tail())
 
-poo = df['CountryNumeric2'].value_counts()
+    # Count by country
+    poo = df['CountryNumeric2'].value_counts()
 
-# plotly
-data = [dict(
-    type='choropleth',
-    locations=poo.index,
-    locationmode='country names',
-    z=poo.values,
-    text=('Count' + '<br>'),
-    colorscale='hot',
-    reversescale=False,
-    marker=dict(line=dict(color='rgb(180,180,180)', width=0.5)),
+    # plotly
+    data = [dict(
+        type='choropleth',
+        locations=poo.index,
+        locationmode='country names',
+        z=poo.values,
+        text=('Count' + '<br>'),
+        colorscale='hot',
+        reversescale=False,
+        marker=dict(line=dict(color='rgb(180,180,180)', width=0.5)),
 
-    colorbar=dict(title='Response count')
-)]
-layout = dict(title='Responsive Programmers throughout the world - Number of response by country',
-              geo=dict(showframe=False,
-                       showcoastlines=True,
-                       projection=dict(type='Mercator')))
-fig = dict(data=data, layout=layout)
-py.plot(fig)
-#py.plt.savefig('static/mapPlot.html')
+        colorbar=dict(title='Response count')
+    )]
+    layout = dict(title='Responsive Programmers throughout the world - Number of response by country',
+                  geo=dict(showframe=False,
+                           showcoastlines=True,
+                           projection=dict(type='Mercator')))
+    fig = dict(data=data, layout=layout)
+    return py.plot(fig, include_plotlyjs=False, output_type='div', show_link=False)

@@ -1,10 +1,7 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas.tools.plotting
-import seaborn as sns
 import matplotlib
-import squarify
+import matplotlib.pyplot as plt
+import pandas as pd
+import mpld3
 
 plt.style.use('seaborn')
 
@@ -13,13 +10,8 @@ numeric_mapping = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric-Map
 numeric = pd.read_csv('data/HackerRank-Developer-Survey-2018-Numeric.csv', na_values=['#NULL!', 'nan'])
 values = pd.read_csv('data/HackerRank-Developer-Survey-2018-Values.csv', na_values=['#NULL!', 'nan'])
 
-codebook.head()
-numeric_mapping.head()
-numeric.head()
-values.head()
-
 codebook.columns = ['fieldname', 'question', 'notes']
-codebook.set_index('fieldname', inplace=True);
+codebook.set_index('fieldname', inplace=True)
 numeric_mapping.set_index('Data Field', inplace=True)
 
 numeric.q1AgeBeginCoding = numeric.q1AgeBeginCoding.astype(float)
@@ -27,14 +19,14 @@ numeric.q2Age = numeric.q2Age.astype(float)
 numeric = numeric.fillna(-1)
 
 values = values.fillna('Not provided')
-print(values.columns.ravel())
+#print(values.columns.ravel())
 
 columns = [i for i in values.columns.ravel() if 'q28' in i]
 langs_known = [i for i in values.columns.ravel() if 'q25' in i]
 columns = columns[:-1]
 langs_known = langs_known[:-1]
 
-plt.figure(figsize=(16, 5))
+fig = plt.figure(figsize=(16, 5))
 
 plt.subplot(121)
 love_height = []
@@ -88,5 +80,5 @@ plt.gca().set_xticklabels([j.split('Love')[-1] for j in columns], rotation='vert
 plt.gca().set_title('Reputation of languages that developers did not nor will not learn')
 plt.gca().set_yticklabels(['%i%%' % abs(i * 100) for i in plt.yticks()[0]])
 plt.ylabel('Percentage of users')
-plt.show()
-plt.savefig('static/languages_reputation.png')
+#plt.show()
+#plt.savefig('static/languages_reputation.png')
