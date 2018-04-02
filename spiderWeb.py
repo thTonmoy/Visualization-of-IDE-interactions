@@ -5,7 +5,7 @@ from math import pi
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from pip._vendor.html5lib._trie import py
+import plotly.offline as py
 
 pd.set_option('display.max_columns', None)
 pd.options.display.max_seq_items = 2000
@@ -24,8 +24,8 @@ for ix,item in hackerRank_numericMapping.iterrows():
     print('{0}: {1} : {2}\n'.format(item[0], item[1], item[2]))
 
 ## Selecting the female respondents:
-dataset = hackerRank_values[hackerRank_values['q3Gender'] == 'Female']
-#dataset = hackerRank_values
+#dataset = hackerRank_values[hackerRank_values['q3Gender'] == 'Female']
+dataset = hackerRank_values
 
 
 ## Attributes of interest:
@@ -208,6 +208,52 @@ ax.fill(angles, values, 'r', alpha=0.1)
 
 # Add legend
 plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
+py.plot_mpl(mpl_fig=fig3, validate=False)
 #plt.savefig('static/lovewWeb.png')
 
+
+
+####HATE HATE   HATE HATE HATE
+
+
+# From: https://python-graph-gallery.com/391-radar-chart-with-several-individuals/
+categories=list(hatelanguage)[1:]
+N = len(categories)
+# What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+angles = [n / float(N) * 2 * pi for n in range(N)]
+angles += angles[:1]
+# Initialise the spider plot
+fig3 = plt.figure(figsize=(8,8))
+ax = plt.subplot(111, polar=True)
+plt.title('Which programming language do people hate the most?', fontsize=14, fontweight='bold')
+
+# If you want the first axis to be on top:
+ax.set_theta_offset(pi / 2)
+ax.set_theta_direction(-1)
+
+# Draw one axe per variable + add labels labels yet
+plt.xticks(angles[:-1], categories)
+# Draw ylabels
+ax.set_rlabel_position(0)
+plt.yticks([3,6,9], ["3%","6%","9%"], color="red", size=12)
+plt.ylim(0,9)
+
+# Plot each individual = each line of the data
+# Ind1
+values=hatelanguage.loc[0].drop('group').values.flatten().tolist()
+values += values[:1]
+ax.plot(angles, values, linewidth=1, linestyle='solid', label="Professional(Hate)")
+ax.fill(angles, values, 'b', alpha=0.1)
+# Ind2
+values=hatelanguage.loc[1].drop('group').values.flatten().tolist()
+values += values[:1]
+ax.plot(angles, values, linewidth=1, linestyle='solid', label="Students(Hate)")
+ax.fill(angles, values, 'r', alpha=0.1)
+
+# Add legend
+plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
+
 plt.show()
+
+
+#
