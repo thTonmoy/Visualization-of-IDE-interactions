@@ -1,0 +1,34 @@
+0,Other (please specify)
+1,Student
+2,New grad
+3,Freelancer
+4,Level 1 developer (junior)
+5,Senior developer
+6,Principal engineer
+7,Architect
+8,Engineering manager
+9,Director / VP of Engineering
+10,Founder / CEO / CTO
+11,None
+0,Developers
+1,Students
+0,Other (please specify)
+1,Web Developer
+2,Front-end Developer
+3,Back-end Developer
+4,Full-stack Developer
+5,Data Analyst
+6,Data Scientist
+7,Mobile Developer
+8,Software Specialist
+9,Software Engineer
+10,Software Test Engineer
+11,Software Architect
+12,Reliability Engineer
+13,Development Operations Engineer
+14,Platform Engineer
+15,Database Administrator
+16,Network Administrator
+17,Data Engineer
+18,Student
+19,Unemployed
