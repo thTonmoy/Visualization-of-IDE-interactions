@@ -40,7 +40,6 @@ def get_map(root:str):
         reversescale=False,
         marker=dict(line=dict(color='rgb(180,180,180)', width=1.0)),
 
-
         colorbar=dict(title='Response count')
     )]
     layout = dict(title='Responsive Programmers throughout the world - Number of response by country',

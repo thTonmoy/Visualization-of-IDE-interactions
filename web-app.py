@@ -40,6 +40,11 @@ def Spider_Web():
     spider = Markup(get_map(app.root_path))
     return render_template("spidy.html", title='Spider', chart= spider)
 
+@app.route('/network')
+def network():
+    network = Markup(get_map(app.root_path))
+    return render_template("network.html", title='Network', chart= network)
+
 
 if __name__ == '__main__':
     app.run()
