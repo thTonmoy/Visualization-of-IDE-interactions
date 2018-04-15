@@ -1,0 +1,12 @@
+<h1>IDE Keyboard shortcuts quiz</h1>
+<form action='/quiz' method='POST'>
+    <ol>
+        {% for i in q %}
+            <li>What is the shortcut for <u>{{i}}</u></li>
+            {% for j in o[i] %}
+                <input type='radio' value='{{j}}' name='{{i}}' />{{j}}
+            {% endfor %}
+        {% endfor %}
+    </ol>
+    <input type="submit" value="submit" />
+</form>
