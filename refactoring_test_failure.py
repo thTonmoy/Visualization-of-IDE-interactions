@@ -64,7 +64,7 @@ def get_plot(fig):
 
 
 def get_div_for_plot(root_path: str):
-    file_path_test = path.join(root_path, 'data', 'csv_data_2016-05-09_test.csv')
+    file_path_test = path.join(root_path, 'data', '2016-05-09_tests.csv')
     file_path_refactor = path.join(root_path, 'data', 'user1_refactoring.csv')
     df_tests = make_dataframe_testing(file_path_test)
     df_refactor = load_refactoring_dataframe(file_path_refactor)

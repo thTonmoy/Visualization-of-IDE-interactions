@@ -1,8 +1,6 @@
 import pandas as pd
 import plotly.offline as py
 import plotly.graph_objs as go
-import matplotlib.style as mpl_style
-import matplotlib.pyplot as plt
 import os
 
 
@@ -132,6 +130,8 @@ def get_bar_chart_div(root_path: str):
 
 
 def get_area_plot():
+    import matplotlib.style as mpl_style
+    import matplotlib.pyplot as plt
     df = load_dataframe("data/fbh.csv")
     df = df.groupby([df['event']]).agg({'duration': sum,
                                               'frequency': sum})

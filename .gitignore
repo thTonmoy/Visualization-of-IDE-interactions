@@ -109,3 +109,5 @@ venv.bak/
 data-processing/\.idea/workspace\.xml
 
 web-app/\.idea/workspace\.xml
+
+\.idea/

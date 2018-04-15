@@ -47,7 +47,7 @@ attributes = ['q1AgeBeginCoding', 'q2Age', 'q3Gender', 'q4Education', 'q0004_oth
 
 dataset = dataset[attributes]
 
-print(dataset.info())
+#print(dataset.info())
 dataset[dataset['q4Education'] == 'Other (please specify)']
 ## Checking the 'q4Education' values:
 dataset['q4Education'].unique()
@@ -65,7 +65,7 @@ dataset['q0008_other'].unique()
 ## Counting the different employment levels:
 q0008_total = dataset['q0008_other'].count()
 q0008_unique = len(dataset['q0008_other'].unique())
-print('From {0} different employment levels, {1} are unique.'.format(q0008_total, q0008_unique))
+#print('From {0} different employment levels, {1} are unique.'.format(q0008_total, q0008_unique))
 
 ## Dropping down these instances:
 q0008_indexes = dataset[dataset['q8JobLevel'] == dataset['q8JobLevel'].unique()[3]]['q0008_other'].index
