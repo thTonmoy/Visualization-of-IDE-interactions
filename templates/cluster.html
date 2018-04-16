@@ -1,14 +1,12 @@
-<html><head><meta charset="utf-8" />
-<meta charset="utf-8" />
-    <link rel=icon type=image/png href="{{ url_for('static', filename='img/favicon.ico') }}">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<html>
+<head>
+    <title>Visualizing IDE interaction</title>
 
-	<title>Responsive Programmers count around the World</title>
+    <link rel="icon" type="image/png" href="static/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
     <!-- Bootstrap core CSS     -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
@@ -19,23 +17,23 @@
     <!--  Light Bootstrap Table core CSS    -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/light-bootstrap-dashboard.css') }}">
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/demo.css') }}">
-
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="static/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="static/css/pe-icon-7-stroke.css" rel="stylesheet"/>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icono.min.css') }}">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/font-all.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-</head><body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+          integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
+</head>
+
+
+<body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="static/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="purple" data-image="static/img/sidebar-3.jpg">
 
-    	<div class="sidebar-wrapper">
+        <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/" class="simple-text">
                     Visualization of IDE Interactions
@@ -45,7 +43,7 @@
             <ul class="nav">
                 <li>
                     <a href="/">
-                        <i class="icono-areaChart"></i>
+                        <i class="icono-barChart"></i>
                         <p>Home</p>
                     </a>
                 </li>
@@ -55,9 +53,9 @@
                         <p>Usage of IDE Commands</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="rb">
-                        <i class="pe-7s-graph"></i>
+                        <i class="fas fa-chart-line"></i>
                         <p>Does Refactoring impact Test and Build Failures</p>
                     </a>
                 </li>
@@ -67,81 +65,60 @@
                         <p>Data set and Processing</p>
                     </a>
                 </li>
-                <li><a href="typography.html">
+                <li>
+                    <a href="typography.html">
                         <i class="icono-pieChart"></i>
                         <p>Visualization 1</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="map">
                         <i class="fas fa-globe"></i>
-                        <p>World Map of responsive programmers</p>
+                        <p>World Map</p>
                     </a>
                 </li>
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#navigation-example-2">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Responsive programmers throughout all Countries</a>
+                    <a class="navbar-brand" href="#">Home</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="pe-7s-home"></i>
-								<p class="hidden-lg hidden-md">Visualization</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
+                                <p class="hidden-lg hidden-md">Visualization</p>
                             </a>
                         </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
-                               <p>About</p>
+                            <a href="">
+                                <p>About</p>
                             </a>
                         </li>
                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <p>
+                                    Dropdown
+                                    <b class="caret"></b>
+                                </p>
 
-                              </a>
-                              <ul class="dropdown-menu">
+                            </a>
+                            <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something</a></li>
@@ -149,14 +126,14 @@
                                 <li><a href="#">Something</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
-                              </ul>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">
                                 <p>Log out</p>
                             </a>
                         </li>
-						<li class="separator hidden-lg"></li>
+                        <li class="separator hidden-lg"></li>
                     </ul>
                 </div>
             </div>
@@ -165,28 +142,15 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="header">
                                 <h3>{{ desc }}</h3>
                             </div>
-                                <div class="content">
-                                    <script src="https://cdn.plot.ly/plotly-geo-latest.min.js"></script>
-                                    {{chart}}
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                   <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h3>Explanation</h3>
+                            <div class="content">
+                                <script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
+                                {{ chart }}
                             </div>
-                                <div class="content">
-                                    <div class="text-justify"></div>
-                                        <p> This is..</p>
-                                </div>
                         </div>
                     </div>
                 </div>
@@ -194,9 +158,7 @@
         </div>
 
 
-
-
-<footer class="footer">
+        <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
@@ -217,18 +179,23 @@
                         </li>
                         <li>
                             <a href="#">
-                               Blog
+                                Blog
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>  Software Engineering , Project by- <a href="https://github.com/sakib2263">Sakib</a>,
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    Software Engineering , Project by- <a href="https://github.com/sakib2263">Sakib</a>,
                     <a href="https://github.com/thTonmoy">Tonmoy</a>
                     ,Zaki
                 </p>
             </div>
         </footer>
+
+
     </div>
 </div>
-</body></html>
+</body>
+</html>

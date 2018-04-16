@@ -5,7 +5,7 @@ import plotly.tools as tls
 from os import path
 
 
-def filter_refactoring_edits(file: str, min_location: int = 6, save_as_csv: bool = False):
+def filter_refactoring_edits(file: str, output_file:str, min_location: int = 6, save_as_csv: bool = False):
     df = pd.read_csv(file, header=0)
     df['date'] = pd.to_datetime(df['date'], format="%Y-%m-%d")
     rows = df.shape[0]
@@ -24,8 +24,7 @@ def filter_refactoring_edits(file: str, min_location: int = 6, save_as_csv: bool
     fin['normalized_occurrence'] = (fin['no_of_occurrence'] - min) / (max - min)
     # fin['normalized']=(fin['size']- min)/(max-min)
     if save_as_csv:
-        output_file_name = "data/user1_refactoring.csv"
-        fin.to_csv(path_or_buf=output_file_name, index=False)
+        fin.to_csv(path_or_buf=output_file, index=False)
     return fin
 
 
@@ -47,7 +46,6 @@ def make_dataframe_build(file: str):
 
 def get_plotly_fig(df_refactor: pd.DataFrame, df_tests: pd.DataFrame, df_build: pd.DataFrame):
     fig = tls.make_subplots(rows=2, cols=1, shared_xaxes=False, print_grid=False, )
-
     fig.append_trace({'x': df_refactor.date, 'y': df_refactor['size'], 'type': 'scatter',
                       'name': "refactored bytes", 'mode': 'lines', 'line': dict(color='rgb(114, 186, 59)'),
                       'fill': 'tozeroy', 'fillcolor': 'rgba(114, 186, 59, 0.5)'}, 1, 1)
@@ -63,12 +61,17 @@ def get_plot(fig):
     py.plot(fig, filename='pandas-time-series.html')
 
 
-def get_div_for_plot(root_path: str):
-    file_path_test = path.join(root_path, 'data', '2016-05-09_tests.csv')
-    file_path_refactor = path.join(root_path, 'data', 'user1_refactoring.csv')
-    df_tests = make_dataframe_testing(file_path_test)
-    df_refactor = load_refactoring_dataframe(file_path_refactor)
-    df_build = make_dataframe_build(path.join(root_path, 'data', '2016-05-09_FailedBuild.csv'))
+def get_div_for_plot(root_path: str, id:int=1):
+    if id ==1:
+        df_tests = make_dataframe_testing(path.join(root_path, 'data', '2016-05-09_tests.csv'))
+        df_refactor = load_refactoring_dataframe(path.join(root_path, 'data', 'user1_refactoring.csv'))
+        df_build = make_dataframe_build(path.join(root_path, 'data', '2016-05-09_FailedBuild.csv'))
+
+    else:
+        df_tests = make_dataframe_testing(path.join(root_path, 'data', '2016-05-10_tests.csv'))
+        df_refactor = load_refactoring_dataframe(path.join(root_path, 'data', 'user2_refactoring.csv'))
+        df_build = make_dataframe_build(path.join(root_path, 'data', '2016-05-10_FailedBuild.csv'))
+
     fig = get_plotly_fig(df_refactor=df_refactor, df_build=df_build, df_tests=df_tests)
     plotly_config = {
         'modeBarButtonsToRemove': ['sendDataToCloud', 'autoScale2d', 'resetScale2d',
@@ -78,11 +81,12 @@ def get_div_for_plot(root_path: str):
 
 
 def main():
-    df_refactor = filter_refactoring_edits('data/csv_data_2016-05-09_edit.csv', save_as_csv=True)
-    df_tests = make_dataframe_testing('data/csv_data_2016-05-09_test.csv')
-    df_build = make_dataframe_build('data/2016-05-09_FailedBuild.csv')
-    fig = get_plotly_fig(df_refactor=df_refactor, df_build=df_build, df_tests=df_tests)
-    get_plot(fig)
+    df_refactor = filter_refactoring_edits('data/csv_data_2016-05-10_edit.csv',
+                                           save_as_csv=True , output_file='data/user2_refactoring.csv')
+    # df_tests = make_dataframe_testing('data/csv_data_2016-05-09_test.csv')
+    # df_build = make_dataframe_build('data/2016-05-09_FailedBuild.csv')
+    # fig = get_plotly_fig(df_refactor=df_refactor, df_build=df_build, df_tests=df_tests)
+    # get_plot(fig)
     return
 
 

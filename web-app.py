@@ -1,7 +1,6 @@
-from flask import Flask, render_template, Markup
+from flask import Flask, render_template, Markup, request
 from feature_by_hour import get_bar_chart_div
 from refactoring_test_failure import get_div_for_plot
-from WorldMap import get_map
 
 app = Flask(__name__)
 
@@ -9,7 +8,7 @@ app = Flask(__name__)
 @app.route('/Bar')
 def hello_world():
     chart = Markup(get_bar_chart_div(app.root_path))
-    return render_template("index.html", title='Bar Chart', chart=chart)
+    return render_template("index.html",title='Bar Chart', chart=chart)
 
 
 @app.route('/')
@@ -24,29 +23,31 @@ def show_tree_chart():
                            desc='Which IDE commands are used the most and how they are triggered')
 
 
-@app.route('/rb')
+@app.route('/rb', methods=['GET', 'POST'])
 def show_refactoring_build_vis():
-    chart = Markup(get_div_for_plot(app.root_path))
+    dev_id = 2
+    if request.method == 'POST':
+        dev_id = request.form['dev']
+    chart = Markup(get_div_for_plot(app.root_path, int(dev_id)))
     return render_template("index.html", title='Refactoring',
-                           desc='Does Refactoring impact Test and Build Failures', chart=chart)
+                           desc='How Refactoring impacts Test and Build Failures', chart=chart)
 
 
 @app.route('/map')
 def world_map():
+    from WorldMap import get_map
     w_map = Markup(get_map(app.root_path))
     return render_template("Wmap.html", title='Map', chart=w_map)
 
 
 @app.route('/spidy')
 def Spider_Web():
-    spider = Markup(get_map(app.root_path))
-    return render_template("spidy.html", title='Spider', chart=spider)
+    return render_template("spidy.html", title='Spider')
 
 
 @app.route('/network')
 def network():
-    network = Markup(get_map(app.root_path))
-    return render_template("network.html", title='Network', chart=network)
+    return render_template("network.html", title='Network')
 
 
 @app.route('/quiz')
@@ -75,5 +76,13 @@ def show_quiz_answers():
     return '<h1><u>' + str(correct) + ' Correct answers: ' + str(corAns) + '</u></h1>'
 
 
+@app.route('/cluster')
+def show_cluster():
+    from cluster_debug_build import get_cluster_viz_dv
+    viz = Markup(get_cluster_viz_dv(app.root_path))
+    return render_template('cluster.html', chart=viz)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run()
