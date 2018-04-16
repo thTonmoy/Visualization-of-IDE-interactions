@@ -9,13 +9,13 @@ app = Flask(__name__)
 @app.route('/Bar')
 def hello_world():
     chart = Markup(get_bar_chart_div(app.root_path))
-    return render_template("index.html",title='Bar Chart', chart=chart)
+    return render_template("index.html", title='Bar Chart', chart=chart)
 
 
 @app.route('/')
 def show_template():
     chart = Markup(get_bar_chart_div(app.root_path))
-    return render_template("dashboard.html", title='Home',chart=chart)
+    return render_template("dashboard.html", title='Home', chart=chart)
 
 
 @app.route('/tree')
@@ -30,21 +30,50 @@ def show_refactoring_build_vis():
     return render_template("index.html", title='Refactoring',
                            desc='Does Refactoring impact Test and Build Failures', chart=chart)
 
+
 @app.route('/map')
 def world_map():
     w_map = Markup(get_map(app.root_path))
-    return render_template("Wmap.html", title='Map', chart= w_map)
+    return render_template("Wmap.html", title='Map', chart=w_map)
+
 
 @app.route('/spidy')
 def Spider_Web():
     spider = Markup(get_map(app.root_path))
-    return render_template("spidy.html", title='Spider', chart= spider)
+    return render_template("spidy.html", title='Spider', chart=spider)
+
 
 @app.route('/network')
 def network():
     network = Markup(get_map(app.root_path))
-    return render_template("network.html", title='Network', chart= network)
+    return render_template("network.html", title='Network', chart=network)
+
+
+@app.route('/quiz')
+def show_quiz():
+    from quiz import questions, shuffle
+    import random
+    questions_shuffled = shuffle(questions)
+    for i in questions.keys():
+        random.shuffle(questions[i])
+    return render_template('quizHTML.html', q=questions_shuffled, o=questions)
+
+
+@app.route('/quizAns', methods=['POST'])
+def show_quiz_answers():
+    from quiz import questions, original_questions
+    from flask import request
+    correct = 0
+    corAns = ''
+    next = ',  \n'
+
+    for i in list(questions.keys()):
+        answered = request.form[i]
+        if original_questions[i][0] == answered:
+            correct = correct + 1
+            corAns = corAns + answered + next
+    return '<h1><u>' + str(correct) + ' Correct answers: ' + str(corAns) + '</u></h1>'
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

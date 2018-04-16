@@ -1,0 +1,7 @@
+Find Action:'Ctrl+Shift+A','Ctrl+Shift+F','Ctrl+F','Ctrl+A'
+Find class, file, or symbol:'All of the above','Ctrl+N','Ctrl+Shift+N','Ctrl+Shift+Alt+N'
+View recent files:Ctrl+E,Ctrl+Alt+E,Ctrl+Shift+R,Ctrl+R
+Show intention actions:Alt+Enter,Shift+Enter,Ctrl+Alt+Enter,Ctrl+Shift+Enter
+Basic code completion:Ctrl+Space,Ctrl+Alt+Space,Alt+Space,Shift+Alt+Space
+Smart code completion:Ctrl+Shift+Space,Ctrl+Space,Alt+Space,Ctrl+Alt+Space
+Highlight usages in file:Ctrl+Shift+F7,Ctrl+F5,Ctrl+Shift+F5,Ctrl+F7
