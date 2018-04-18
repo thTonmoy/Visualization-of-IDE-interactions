@@ -60,20 +60,41 @@ def show_quiz():
     return render_template('quizHTML.html', q=questions_shuffled, o=questions)
 
 
-@app.route('/quizAns', methods=['POST'])
-def show_quiz_answers():
-    from quiz import questions, original_questions
-    from flask import request
-    correct = 0
-    corAns = ''
-    next = ',  \n'
+# @app.route('/quizAns', methods=['POST'])
+# def show_quiz_answers():
+#     from quiz import questions, original_questions
+#     from flask import request
+#     correct_amount = 0
+#     correct_answers = ''
+#     next = ',  \n'
+#
+#
+#     for i in list(questions.keys()):
+#         answered = request.form[i]
+#         if original_questions[i][0] == answered:
+#             correct_amount = correct_amount + 1
+#             correct_answers = correct_answers + answered + next
+#
+#     return render_template('quizAnswers.html', cor_amount=correct_amount, cor_answers=correct_answers)
 
-    for i in list(questions.keys()):
-        answered = request.form[i]
-        if original_questions[i][0] == answered:
-            correct = correct + 1
-            corAns = corAns + answered + next
-    return '<h1><u>' + str(correct) + ' Correct answers: ' + str(corAns) + '</u></h1>'
+@app.route('/quizAns', methods='POST')
+def show_quiz_answers():
+     from quiz import questions, original_questions
+     from flask import request
+     correct = 0
+
+     response = '\n'
+     for i in list(questions.keys()):
+         answered = request.form[i]
+         response = response + '\nQuestion: ' + i + "\n" + 'Your answer ' + answered + '\n'
+         if original_questions[i][0] == answered:
+             correct = correct + 1
+             response = response + "is correct" + '\n'
+         else:
+             response = response + "is incorrect" + '\n'
+
+     return '<h1>' + str(correct) + '<pre>' + ' Correct answers:' + str(response) + '</pre' +  '</h>'
+
 
 
 @app.route('/cluster')

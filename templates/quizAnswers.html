@@ -1,3 +1,14 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>'<h1><u>' + str(correct) + ' Correct answers: ' + str(corAns) + '</u></h1>'</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <html>
     <head>
         <title>Visualizing IDE interaction</title>
@@ -180,14 +191,11 @@
                                     <h1>IDE Keyboard shortcuts quiz</h1>
 <form action='/quizAns' method='POST'>
     <ol>
-        {% for i in q %}
-            <li>What is the shortcut for <u>{{i}}</u></li>
-            {% for j in o[i] %}
-                <input type='radio' value='{{j}}' name='{{i}}' />{{j}}
-            {% endfor %}
-        {% endfor %}
+        <u>{{cor_amount}}</u> Correct answers:
+        <u>{{cor_answers}}</u>
+
     </ol>
-    <input type="submit" value="Submit" />
+    <input type="button" value="Go back!" onclick="history.back()">
 </form>
                                 </div>
                         </div>
@@ -195,6 +203,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
      <footer class="footer">
             <div class="container-fluid">

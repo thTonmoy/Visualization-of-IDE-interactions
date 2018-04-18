@@ -40,13 +40,20 @@ def quiz():
 
 
 def quiz_answers():
+    from quiz import questions, original_questions
+    from flask import request
     correct = 0
-    corAns = ''
-    next = ',  \n'
 
+    response = '\n'
     for i in list(questions.keys()):
         answered = request.form[i]
+        response = response + '\nQuestion: ' + i + "\n" + 'Your answer ' + answered + '\n'
         if original_questions[i][0] == answered:
             correct = correct + 1
-            corAns = corAns + answered + next
-    return '<h1><u>' + str(correct) + ' Correct answers: ' + str(corAns) + '</u></h1>'
+            response = response + "is correct" + '\n'
+        else:
+            response = response + "is incorrect" + '\n'
+    return
+    '<h1>' + str(correct) + '<pre>' + ' Correct answers:' + str(response) + '</pre' + '</h>'
+
+    return render_template('quizAnswers.html')
