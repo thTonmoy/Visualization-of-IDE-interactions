@@ -1,14 +1,9 @@
 from flask import Flask, render_template, Markup, request
+
 from feature_by_hour import get_bar_chart_div
 from refactoring_test_failure import get_div_for_plot
 
 app = Flask(__name__)
-
-
-@app.route('/Bar')
-def hello_world():
-    chart = Markup(get_bar_chart_div(app.root_path))
-    return render_template("index.html",title='Bar Chart', chart=chart)
 
 
 @app.route('/')
@@ -23,6 +18,14 @@ def show_tree_chart():
                            desc='Which IDE commands are used the most and how they are triggered')
 
 
+@app.route('/fig/wordcloud')
+def get_wordcloud_fig():
+    from command_events import get_wordcloud
+    from flask import send_file
+    img = get_wordcloud(app.root_path)
+    return send_file(img, mimetype='image/png')
+
+
 @app.route('/rb', methods=['GET', 'POST'])
 def show_refactoring_build_vis():
     dev_id = 2
@@ -30,7 +33,7 @@ def show_refactoring_build_vis():
         dev_id = request.form['dev']
     chart = Markup(get_div_for_plot(app.root_path, int(dev_id)))
     return render_template("index.html", title='Refactoring',
-                           desc='How Refactoring impacts Test and Build Failures', chart=chart)
+                           desc='Refactoring, build and test failures on developer Timeline', chart=chart)
 
 
 @app.route('/map')

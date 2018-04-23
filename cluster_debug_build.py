@@ -59,7 +59,7 @@ def get_cluster_viz_dv(root_path: str):
         'modeBarButtonsToRemove': ['sendDataToCloud', 'autoScale2d', 'resetScale2d', 'hoverClosestCartesian',
                                    'hoverCompareCartesian', 'lasso2d', 'select2d'],
         'displaylogo': False, 'showTips': True}
-    return py.plot(fig, include_plotlyjs=True, output_type='div', show_link=False, config=plotly_config)
+    return py.plot(fig, include_plotlyjs=False, output_type='div', show_link=False, config=plotly_config)
 
 
 def main():
