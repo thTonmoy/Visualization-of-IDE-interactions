@@ -44,12 +44,6 @@ def world_map():
 def Spider_Web():
     return render_template("spidy.html", title='Spider')
 
-
-@app.route('/network')
-def network():
-    return render_template("network.html", title='Network')
-
-
 @app.route('/quiz')
 def show_quiz():
     from quiz import questions, shuffle
@@ -84,6 +78,10 @@ def show_cluster():
     from cluster_debug_build import get_cluster_viz_dv
     viz = Markup(get_cluster_viz_dv(app.root_path))
     return render_template('cluster.html', chart=viz)
+
+@app.route('/network')
+def show_net():
+    return render_template('NetworkGraph.html')
 
 
 if __name__ == '__main__':
