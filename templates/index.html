@@ -7,6 +7,7 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
+
     <!-- Bootstrap core CSS     -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
@@ -17,21 +18,24 @@
     <!--  Light Bootstrap Table core CSS    -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/light-bootstrap-dashboard.css') }}">
 
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/demo.css') }}">
+
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="static/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/pe-icon-7-stroke.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icono.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/font-all.min.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
           integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
 </head>
 
-
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="static/img/sidebar-3.jpg">
+    <div class="sidebar" data-color="purple" data-image="static/img/tht.jpg">
 
    <div class="sidebar-wrapper">
             <div class="logo">
@@ -73,7 +77,7 @@
                 </li>
                 <li>
                     <a href="map">
-                        <i class="fas fa-globe"></i>
+                        <i class="pe-7s-world"></i>
                         <p>World Map</p>
                     </a>
                 </li>
@@ -247,9 +251,18 @@
                 </p>
             </div>
         </footer>
-
-
     </div>
 </div>
 </body>
+<!--   Core JS Files   -->
+<script src="{{ url_for('static', filename='js/jquery.3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<!--  Charts Plugin -->
+<script src="{{ url_for('static', filename='js/chartist.min.js') }}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ url_for('static', filename='js/bootstrap-notify.js') }}"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{ url_for('static', filename='js/light-bootstrap-dashboard.js') }}"></script>
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{ url_for('static', filename='js/demo.js') }}"></script>
 </html>

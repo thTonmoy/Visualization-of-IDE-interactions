@@ -32,7 +32,7 @@
 
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="static/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="blue" data-image="static/img/tht.jpg">
 
         <div class="sidebar-wrapper">
             <div class="logo">
@@ -74,7 +74,7 @@
                 </li>
                 <li>
                     <a href="map">
-                        <i class="fas fa-globe"></i>
+                        <i class="pe-7s-world"></i>
                         <p>World Map</p>
                     </a>
                 </li>
@@ -329,6 +329,16 @@
         </footer>
     </div>
 </div>
-
 </body>
+<!--   Core JS Files   -->
+<script src="{{ url_for('static', filename='js/jquery.3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<!--  Charts Plugin -->
+<script src="{{ url_for('static', filename='js/chartist.min.js') }}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ url_for('static', filename='js/bootstrap-notify.js') }}"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{ url_for('static', filename='js/light-bootstrap-dashboard.js') }}"></script>
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{ url_for('static', filename='js/demo.js') }}"></script>
 </html>
