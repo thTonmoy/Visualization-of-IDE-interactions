@@ -5,12 +5,6 @@
     <title>Usage of IDE Commands</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
-
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    {#    <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>#}
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
-    <script src="{{ url_for('static', filename='js/tree-chart.js') }}"></script>
-
     <link rel="icon" type="image/png" href="static/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <!-- Bootstrap core CSS     -->
@@ -23,16 +17,121 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="static/css/pe-icon-7-stroke.css" rel="stylesheet"/>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icono.min.css') }}">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/font-all.min.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
           integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
+    <script src="{{ url_for('static', filename='js/tree-chart.js') }}"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #myImg {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg:hover {
+            opacity: 0.7;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Add Animation */
+        .modal-content, #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
 
 </head>
 <body>
 
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="static/img/tht.jpg">
+    <div class="sidebar" data-color="blue" data-image="static/img/sidebar-4.jpg">
 
         <div class="sidebar-wrapper">
             <div class="logo">
@@ -58,12 +157,6 @@
                     <a href="rb">
                         <i class="pe-7s-graph"></i>
                         <p>Correlation between Refactoring and Test & Build Failures</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="cluster">
-                        <i class="pe-7s-note2"></i>
-                        <p>Data set and Processing</p>
                     </a>
                 </li>
                 <li>
@@ -96,6 +189,12 @@
                         <p>Quiz</p>
                     </a>
                 </li>
+                <li>
+                    <a href="cluster">
+                        <i class="pe-7s-note2"></i>
+                        <p>Data set and Processing</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -114,38 +213,6 @@
                     <a class="navbar-brand" href="#">Command Usage Visualization</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="pe-7s-home"></i>
-                                <p class="hidden-lg hidden-md">Visualization</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-globe"></i>
-                                <b class="caret hidden-lg hidden-md"></b>
-                                <p class="hidden-lg hidden-md">
-                                    5 Notifications
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                                <p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="">
@@ -159,20 +226,6 @@
                                     <b class="caret"></b>
                                 </p>
 
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
                             </a>
                         </li>
                         <li class="separator hidden-lg"></li>
@@ -191,7 +244,7 @@
                                 <h3>{{ desc }}</h3>
                             </div>
                             <div class="content">
-                                <div id="chart"></div>
+                                <div id="chart">
                                 <script>
 
                                     var myTree = tree().height(800).width(960);
@@ -244,6 +297,7 @@
                                     });
 
                                 </script>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -274,7 +328,15 @@
                                 <h4>Generated Wordcloud from top Commands</h4>
                             </div>
                             <div class="content">
-                                <img src="{{ url_for('get_wordcloud_fig') }}" alt="Image Placeholder" height="400">
+                                <img id="myImg" src="{{ url_for('get_wordcloud_fig') }}"
+                                     alt="Wordcloud representation of Top Commands" height="400">
+
+                                <div id="myModal" class="modal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" id="img01">
+                                    <div id="caption"></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -329,6 +391,27 @@
         </footer>
     </div>
 </div>
+<script>
+    var modal = document.getElementById('myModal');
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+</script>
+
 </body>
 <!--   Core JS Files   -->
 <script src="{{ url_for('static', filename='js/jquery.3.2.1.min.js') }}"></script>

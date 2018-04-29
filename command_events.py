@@ -1,6 +1,8 @@
 from io import BytesIO
 from os import path
 
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -26,7 +28,7 @@ def create_top_commands_csv(no_of_top_commands: int, output_file: str):
 
 
 def get_wordcloud(root_path: str):
-    commands = pd.read_csv(path.join(root_path, 'static', 'data', 'test_comm_100.csv'), usecols=[1, 2])
+    commands = pd.read_csv(path.join(root_path, 'static', 'data', 'test_comm.csv'), usecols=[1, 2])
     d = {}
     for a, x in commands.values:
         d[a] = x

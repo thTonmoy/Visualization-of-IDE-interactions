@@ -57,3 +57,4 @@ def quiz_answers():
     '<h1>' + str(correct) + '<pre>' + ' Correct answers:' + str(response) + '</pre' + '</h>'
 
     return render_template('quizAnswers.html')
+
